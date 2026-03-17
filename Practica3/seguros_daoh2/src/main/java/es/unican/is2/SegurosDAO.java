@@ -51,8 +51,7 @@ public class SegurosDAO implements ISegurosDAO {
 	public Seguro seguro(long id) throws DataAccessException {
 		Seguro result = null; 
 		Connection con = H2ServerConnectionManager.getConnection();
-		try {
-			Statement statement = con.createStatement();
+		try (Statement statement = con.createStatement()){
 			String statementText = "select * from Seguros where id = '"+ id+"'";
 			ResultSet results = statement.executeQuery(statementText);
 			if (results.next()) { 
@@ -71,8 +70,7 @@ public class SegurosDAO implements ISegurosDAO {
 	public List<Seguro> seguros() throws DataAccessException {
 		List<Seguro> seguros = new LinkedList<Seguro>();
 		Connection con = H2ServerConnectionManager.getConnection(); 
-		try {
-			Statement statement = con.createStatement(); 
+		try (Statement statement = con.createStatement() ){
 			String statementText = "select * from Seguros"; 
 			ResultSet results = statement.executeQuery(statementText); 
 			// Procesamos cada fila como vehiculo independiente
@@ -92,8 +90,7 @@ public class SegurosDAO implements ISegurosDAO {
 	public Seguro seguroPorMatricula(String matricula) throws DataAccessException {
 		Seguro result = null; 
 		Connection con = H2ServerConnectionManager.getConnection();
-		try {
-			Statement statement = con.createStatement();
+		try (Statement statement = con.createStatement()){
 			String statementText = "select * from Seguros where matricula = '"+ matricula+"'";
 			ResultSet results = statement.executeQuery(statementText);
 			if (results.next()) { 

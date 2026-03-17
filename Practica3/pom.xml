@@ -7,7 +7,7 @@
     <artifactId>Seguros</artifactId>
     <version>0.0.1</version>
     <packaging>pom</packaging>
-    <name>Seguros</name> <!-- Este es el nombre por defecto en Sonar -->
+    <name>SegurosFinal</name> <!-- Este es el nombre por defecto en Sonar -->
 
     <properties>
         <maven.compiler.target>25</maven.compiler.target>
@@ -17,10 +17,6 @@
         <sonar.host.url>http://localhost:9000</sonar.host.url>
         <!-- modificar este token por el vuestro -->
         <sonar.token>sqa_f0b72c2c5dfee0456aaaa5aba1f757dba1cb23b5</sonar.token> 
-        
-        <!-- Propiedades para usar SonarCloud -->
-        <!-- <sonar.projectKey>Seguros3</sonar.projectKey> -->
-        <!-- <sonar.projectName>Seguros3</sonar.projectName> -->
     </properties>
 
     <!-- Nombres de los directorios que contienen los módulos. Asegurar que se correspondan con vuestros directorios -->
