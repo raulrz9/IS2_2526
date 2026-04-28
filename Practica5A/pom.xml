@@ -1,31 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <groupId>es.unican.is2</groupId>
-    <artifactId>Seguros</artifactId>
-    <version>0.0.1</version>
-    <packaging>pom</packaging>
-    <name>SegurosFinal</name> <!-- Este es el nombre por defecto en Sonar -->
+    <artifactId>seguros_gui</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.target>25</maven.compiler.target>
         <maven.compiler.source>25</maven.compiler.source>
-
-        <!-- Propiedades para usar SonarQube en local-->
-        <sonar.host.url>http://localhost:9000</sonar.host.url>
-        <!-- modificar este token por el vuestro -->
-        <sonar.token>sqa_f0b72c2c5dfee0456aaaa5aba1f757dba1cb23b5</sonar.token> 
+        <maven.compiler.target>25</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- Nombres de los directorios que contienen los módulos. Asegurar que se correspondan con vuestros directorios -->
-    <modules>
-	<module>seguros_common</module>
- 	<module>seguros_daoh2</module>
-        <module>seguros_business</module>   
-        <module>seguros_gui</module>
-	<module>seguros_main</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>es.unican.is2</groupId>
+            <artifactId>seguros_common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-swing-junit</artifactId>
+            <version>3.17.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

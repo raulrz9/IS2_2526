@@ -14,7 +14,7 @@ import java.sql.Statement;
 public class H2ServerConnectionManager {
 
 	// Conexion con la base de datos
-	protected static Connection connection;
+	public static Connection connection;
 
 	// Atributos de acceso a la Base de Datos
 	protected static String dbName = "test";

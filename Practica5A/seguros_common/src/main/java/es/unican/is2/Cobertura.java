@@ -5,6 +5,6 @@ package es.unican.is2;
  */
 public enum Cobertura {
 	
-	TERCEROS, TODO_RIESGO, TERCEROS_LUNAS;
+	TERCEROS, TODO_RIESGO, TERCEROS_LUNAS, OTRO;
 
 }
