@@ -14,6 +14,8 @@ public class GestionSeguros implements IGestionClientes, IGestionSeguros, IInfoS
     }
 
     // ===== IGestionClientes =====
+    
+    
 
     @Override
     public Cliente nuevoCliente(Cliente c) throws DataAccessException {
