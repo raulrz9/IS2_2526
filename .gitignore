@@ -1,1 +1,9 @@
- 
+# Maven / Java build output
+target/
+**/target/
+*.class
+*.jar
+*.war
+*.ear
+# Maven metadata
+dependency-reduced-pom.xml 

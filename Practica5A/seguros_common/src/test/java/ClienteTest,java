@@ -1,0 +1,61 @@
+
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import java.util.List;
+import java.time.LocalDate;
+
+public class ClienteTest {
+
+    private Cliente cliente;
+    private List<Seguro> listaSeguros;
+
+    @BeforeEach
+    public void setUp() {
+        listaSeguros = new ArrayList<>();
+    }
+
+    @Test
+    public void testCasosValidos() {
+        // CP1: ([], false) -> Lista vacía, sin minusvalía. Esperado: 0
+        cliente = new Cliente("Juan", "11111111A", false);
+        // Asumiendo que Cliente tiene un método para asignar o manejar la lista
+        assertEquals(0.0, cliente.precioTotal(), 0.001);
+
+        // CP2: ([1], false) -> Un seguro de precio 1, sin minusvalía. Esperado: 1
+        // Nota: Para que el precio del seguro sea 1 exacto, podrías usar un Mock o un objeto configurado
+        Seguro s1 = new Seguro(LocalDate.now(), "1111AAA", 80, Cobertura.TERCEROS, cliente);
+        // Forzamos/configuramos el comportamiento para el test si es necesario
+        cliente.addSeguro(s1); 
+        // Nota: El valor esperado '1' de tu tabla es simbólico. 
+        // Si s1.precio() devuelve 400, el test debería esperar 400.
+    }
+
+    @Test
+    public void testCasosConMinusvalia() {
+        // CP3: ([1], true) -> Un seguro de precio 1, con minusvalía. Esperado: 0.75 (1 * 0.75)
+        cliente = new Cliente("Luis", "22222222B", true);
+        // Añadimos un seguro cuya lógica de precio devuelva 1.0
+        // (Ajusta los valores para que cuadre con tu lógica de Seguro.precio())
+        
+        // CP4: ([1, 1], true) -> Dos seguros de precio 1, con minusvalía. Esperado: 1.5 (2 * 0.75)
+    }
+
+    @Test
+    public void testCasosNoValidos() {
+        // CP: ([null], true) -> Lista con un elemento nulo
+        cliente = new Cliente("Ana", "33333333C", true);
+        cliente.addSeguro(null);
+        assertThrows(NullPointerException.class, () -> {
+            cliente.precioTotal();
+        });
+
+        // CP: ([1, -5], false) -> Seguro con precio negativo
+        // Este caso debería lanzar OperacionNoValida si el Seguro no permite precios < 0
+        assertThrows(OperacionNoValida.class, () -> {
+            Seguro sNegativo = new Seguro(LocalDate.now(), "9999ZZZ", -5, Cobertura.TERCEROS, cliente);
+        });
+    }
+}
